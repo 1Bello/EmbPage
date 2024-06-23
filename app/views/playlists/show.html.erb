@@ -1,0 +1,19 @@
+<h1 class="text-center"><%= @playlist.name %> <%= link_to 'Back', playlists_path, class: 'btn btn-secondary' %></h1>
+<h2 class="text-center">Songs:</h2>
+<div class="container">
+  <div class="row">
+    <% @playlist.songs.each do |song| %>
+      <div class="col-sm-2">
+        <div class="card" style="width: 12rem;">
+          <%= link_to song_path(song, playlist_id: @playlist.id) do %>
+            <img src="<%= song.song_image %>" class="card-img-top" alt="<%= song.name %>" style="width: 100%; max-width: 200px;">
+          <% end %>
+          <div class="card-body">
+            <h5 class="card-title"><%= song.name %></h5>
+            <p><%= song.artist_name %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <img src="<%= @song.song_image %>" alt="<%= @song.name %>" style="width: 100%; max-width: 500px;">
+        </div>
+        <div class="col-md-6">
+            <h1 class="text-center"><%= @song.name %></h1>
+            <h2 class="text-center"><%= @song.artist_name %></h2>
+            <h3 class="mb-1 text-center">Tabs:</h3>
+            <div class="text-center">
+                <%= link_to 'Songsterr', "https://www.songsterr.com/?pattern=#{@song.name}", class: 'btn btn-primary ' %>
+                <%= link_to 'Ultimate Guitar', "https://www.ultimate-guitar.com/search.php?search_type=title&value=#{@song.name}", class: 'btn btn-warning' %>
+            </div>
+            <div class="text-center">
+                <%= link_to 'Back', playlist_path(params[:playlist_id]), class: 'btn btn-secondary' %>
+            </div>
+        </div>
+    </div>
+</div>
