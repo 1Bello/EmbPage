@@ -4,25 +4,25 @@ class ApplicationController < ActionController::Base
     #skip_before_action :verify_authenticity_token
 
     @@received_json = nil
-  
+    @@message_content = nil
+    
     def index
-        @received_json = @@received_json
+        @message_content = @@message_content
     end
 
-    #def receive_data
-        #@@received_json = request.raw_post
-        #render json: @@received_json
     def receive_data
-        @@received_json = request.body.read
-        render json: { message: JSON.parse(@@received_json) }
-    rescue JSON::ParserError => e
-        render json: { error: "Invalid JSON format: #{e.message}" }, status: 400
+        begin
+            json_data = JSON.parse(request.body.read)
+            @@received_json = json_data
+            @@message_content = json_data["message"]
+            render json: { message: json_data }
+        rescue JSON::ParserError => e
+            render json: { error: "Invalid JSON format: #{e.message}" }, status: 400
+        end
     end
 
     def fetch_data
-        #render json: @@received_json
-
-        render json: { message: @@received_json }
+        render json: { message: @@message_content }
     end
 
 end

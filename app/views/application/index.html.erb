@@ -24,7 +24,7 @@
 <h1>Received JSON Data</h1>
 
 <pre id="json-data">
-    <%= @received_json %>
+    <%= @message_content %>
 </pre>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -36,7 +36,8 @@
       dataType: 'json',
       success: function(data) {
         //$('#json-data').text(JSON.stringify(data.message, null, 2));
-        $('#data-display').text(data.message);
+        //$('#data-display').text(data.message);
+        $('#json-data').text(data.message);
       }
     });
   }
