@@ -3,10 +3,13 @@ require "active_support/core_ext/integer/time"
 Rails.application.configure do
 
   # la ip de mi laptop jejejej
-  config.web_console.permissions = '190.215.236.45'
+  #config.web_console.permissions = '190.215.236.45'
   
   # la ip de mi celular xdlol...
-  config.web_console.permissions = '191.126.172.15'
+  #config.web_console.permissions = '191.126.172.15'
+
+  # no se pueden agregar mas de una ip, pero se pueden agregar rangos de ipv4!!
+  config.web_console.permissions = '0.0.0.0/0'
 
   # Settings specified here will take precedence over those in config/application.rb.
 
