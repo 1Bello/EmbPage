@@ -4,7 +4,9 @@ Rails.application.configure do
 
   # la ip de mi laptop jejejej
   config.web_console.permissions = '190.215.236.45'
-
+  
+  # la ip de mi celular xdlol...
+  config.web_console.permissions = '191.126.172.15'
 
   # Settings specified here will take precedence over those in config/application.rb.
 
