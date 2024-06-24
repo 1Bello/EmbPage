@@ -35,7 +35,8 @@
       method: 'GET',
       dataType: 'json',
       success: function(data) {
-        $('#json-data').text(JSON.stringify(data.message, null, 2));
+        //$('#json-data').text(JSON.stringify(data.message, null, 2));
+        $('#data-display').text(data.message);
       }
     });
   }
