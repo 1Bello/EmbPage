@@ -1,2 +1,25 @@
 <h1>Received JSON Data</h1>
-<pre><%= @received_json %></pre>
+
+<pre id="json-data">
+    <%= @received_json %>
+</pre>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+  function fetchData() {
+    $.ajax({
+      url: '/fetch_data',
+      method: 'GET',
+      dataType: 'json',
+      success: function(data) {
+        $('#json-data').text(JSON.stringify(data, null, 2));
+      }
+    });
+  }
+
+  // Fetch data every 5 seconds
+  setInterval(fetchData, 5000);
+
+  // Fetch data initially when the page loads
+  fetchData();
+</script>

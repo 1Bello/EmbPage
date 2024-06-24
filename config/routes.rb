@@ -10,4 +10,5 @@ Rails.application.routes.draw do
   
   root "application#index"
   post 'receive_data', to: 'application#receive_data'
+  get 'fetch_data', to: 'application#fetch_data'
 end
