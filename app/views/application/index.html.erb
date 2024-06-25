@@ -11,22 +11,16 @@
     #json-data {
       margin-right: 20px;
     }
-    #image-container {
-      flex-shrink: 0;
-    }
   </style>
 </head>
 <body>
   <div id="container">
     <h3 id="json-data">
       <%= @message_content %>
+      <br>
     </h3>
     <h4 id="time-display">
-      
     </h4>
-    <div id="image-container">
-      <%= image_tag 'ty.jpg', alt: 'Descriptive Alt Text', id: 'right-image' %>
-    </div>
   </div>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
