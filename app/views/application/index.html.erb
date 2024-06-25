@@ -8,22 +8,20 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
   function fetchData() {
+    fetchTime = new Date().toLocaleTimeString(); // Update fetch time on function call
     $.ajax({
       url: '/fetch_data',
       method: 'GET',
       dataType: 'json',
       success: function(data) {
-        if (data.message) { // Check if data.message is not empty
+         if (data.message) { // Check if data.message is not empty
           $('#json-data').text(data.message);
-
-          // Get the current time
-          var currentTime = new Date().toLocaleTimeString();
 
           // Remove any existing time display element
           $('#time-display').remove();
 
-          // Create a new time display element
-          var timeDisplay = $('<p id="time-display">Last updated at: ' + currentTime + '</p>');
+          // Create a new time display element using fetchTime
+          var timeDisplay = $('<p id="time-display">Last fetched at: ' + fetchTime + '</p>');
 
           // Append the new time display element to the body (or any specific parent element)
           $('body').append(timeDisplay);
