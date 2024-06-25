@@ -15,6 +15,7 @@ class ApplicationController < ActionController::Base
             json_data = JSON.parse(request.body.read)
             @@received_json = json_data
             @@message_content = json_data["message"]
+            @time = Time.now
             render json: { message: json_data }
         rescue JSON::ParserError => e
             render json: { error: "Invalid JSON format: #{e.message}" }, status: 400

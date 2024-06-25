@@ -1,31 +1,12 @@
-
-<!--
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script>
-  function fetchData() {
-    $.ajax({
-      url: '/fetch_data',
-      method: 'GET',
-      dataType: 'json',
-      success: function(data) {
-        $('#json-data').text(JSON.stringify(data, null, 2));
-      }
-    });
-  }
-
-  // Fetch data every 5 seconds
-  setInterval(fetchData, 5000);
-
-  // Fetch data initially when the page loads
-  fetchData();
-</script>
--->
-
 <h1>Received JSON Data</h1>
 
-<pre id="json-data">
-    <%= @message_content %>
-</pre>
+<h1 id="json-data">
+    <% if @message_content%>
+        Found: <%= @message_content %> at <%= @time %>
+    <% else %>
+        No car has been found... yet!
+    <% end %>
+</h1>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
