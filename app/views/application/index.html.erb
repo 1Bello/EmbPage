@@ -1,14 +1,10 @@
-<h1 id="json-data">
-    <% if @message_content.nil?%>
-        No car has been found... yet!
-    <% else %>
-        <% if @message_content.include? "Other" %>
-            No car has been found... yet!
-        <% else %>
-            Found <%= @message_content %> at <%= @time %>
-        <% end %>
-    <% end %>
-</h1>
+<h3 id="json-data">
+    <%= @message_content %>
+</h3>
+
+<pre>
+    <%=@time%>
+</pre>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
