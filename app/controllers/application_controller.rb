@@ -30,4 +30,12 @@ class ApplicationController < ActionController::Base
         render json: { message: @@message_content }
     end
 
+    def about
+        render 'about'
+    end
+
+    def sight
+        @received_json = @@received_json
+        render 'sight'
+    end
 end

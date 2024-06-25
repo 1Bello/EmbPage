@@ -2,9 +2,7 @@
     <%= @message_content %>
 </h3>
 
-<p>
-    <%=@time%>
-</p>
+<p id="time-display"></p>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
@@ -17,6 +15,9 @@
         //$('#json-data').text(JSON.stringify(data.message, null, 2));
         //$('#data-display').text(data.message);
         $('#json-data').text(data.message);
+
+         var currentTime = new Date().toLocaleTimeString();
+        $('#time-display').text("Last seen: " + currentTime);
       }
     });
   }
