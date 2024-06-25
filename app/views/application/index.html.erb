@@ -8,14 +8,16 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
   function fetchData() {
-    fetchTime = new Date().toLocaleTimeString(); // Update fetch time on function call
     $.ajax({
       url: '/fetch_data',
       method: 'GET',
       dataType: 'json',
       success: function(data) {
-         if (data.message) { // Check if data.message is not empty
+        if (data.message) { // Check if data.message is not empty
           $('#json-data').text(data.message);
+
+          // Get the current time when data is received
+          var fetchTime = new Date().toLocaleTimeString();
 
           // Remove any existing time display element
           $('#time-display').remove();
