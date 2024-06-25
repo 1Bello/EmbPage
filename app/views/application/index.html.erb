@@ -1,40 +1,60 @@
-<h3 id="json-data">
-    <%= @message_content %>
-</h3>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    #container {
+      display: flex;
+      align-items: center;
+    }
+    #json-data {
+      margin-right: 20px;
+    }
+    #image-container {
+      flex-shrink: 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <h3 id="json-data">
+      <%= @message_content %>
+    </h3>
+    <h4 id="time-display">
+      
+    </h4>
+    <div id="image-container">
+      <%= image_tag 'ty.jpg', alt: 'Descriptive Alt Text', id: 'right-image' %>
+    </div>
+  </div>
 
-<!-- Remove the static time-display element -->
-<!-- <p id="time-display"></p> -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script>
+    function fetchData() {
+      $.ajax({
+        url: '/fetch_data',
+        method: 'GET',
+        dataType: 'json',
+        success: function(data) {
+          if (data.message) { // Check if data.message is not empty
+            $('#json-data').text(data.message);
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script>
-  function fetchData() {
-    $.ajax({
-      url: '/fetch_data',
-      method: 'GET',
-      dataType: 'json',
-      success: function(data) {
-        if (data.message) { // Check if data.message is not empty
-          $('#json-data').text(data.message);
+            // Get the current time when data is received
+            var fetchTime = new Date().toLocaleTimeString();
 
-          // Get the current time when data is received
-          var fetchTime = new Date().toLocaleTimeString();
-
-          // Remove any existing time display element
-          $('#time-display').remove();
-
-          // Create a new time display element using fetchTime
-          var timeDisplay = $('<p id="time-display">Last fetched at: ' + fetchTime + '</p>');
-
-          // Append the new time display element to the body (or any specific parent element)
-          $('body').append(timeDisplay);
+            // Update the time display element
+            $('#time-display').text('Last fetched at: ' + fetchTime);
+          }
         }
-      }
-    });
-  }
+      });
+    }
 
-  // Fetch data every 5 seconds
-  setInterval(fetchData, 5000);
+    // Fetch data every 5 seconds
+    setInterval(fetchData, 5000);
 
-  // Fetch data initially when the page loads
-  fetchData();
-</script>
+    // Fetch data initially when the page loads
+    fetchData();
+  </script>
+</body>
+</html>
