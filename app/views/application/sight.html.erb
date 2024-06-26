@@ -24,7 +24,7 @@
           <%= message[:content] %>
         </h3>
         <h4 class="time-display">
-          Last fetched at: <%= message[:time].strftime('%I:%M %p') %>
+          Last fetched at: <%= (message[:time] - 4.hours).strftime('%I:%M %p') %>
         </h4>
         <hr>
       </div>
